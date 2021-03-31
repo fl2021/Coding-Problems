@@ -6,7 +6,7 @@ class Point{
     this.y = y;
   }
 }
-
+//BFS
 public class Solution {
     /**
      * @param maze: the maze
