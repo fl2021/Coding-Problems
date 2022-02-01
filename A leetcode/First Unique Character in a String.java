@@ -17,3 +17,5 @@ class Solution {
         
     }
 }
+//Time Complexity : O(n)
+//Space Complexitiy: O(1)

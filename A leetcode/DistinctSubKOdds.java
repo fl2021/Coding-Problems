@@ -50,3 +50,5 @@ public class Main {
         }
     }
 }
+//Time Complexity : O(n^2)
+//Space Complexitiy: O(n)?
