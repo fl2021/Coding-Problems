@@ -20,12 +20,9 @@ class Solution {
             } else {
                 
                 set.remove(s.charAt(right));
-                right++;
-                
-            }
-            
+                right++; 
+            }    
         }
-        return max;
-        
+        return max;   
     }
 }
