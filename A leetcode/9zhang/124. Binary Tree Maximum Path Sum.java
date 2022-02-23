@@ -17,6 +17,7 @@ class Solution {
     //所有path中的最大路径和，每次一步步更新
     private int maxSum = Integer.MIN_VALUE;
     //代表以node为最高点的路径最大值
+    //此处的maxsum是类的变量，类的变量运用是类
     private int helper(TreeNode node) {
         //如果节点为null，返回0
         if (node == null) {
@@ -45,3 +46,4 @@ class Solution {
 
 //currentmax记录的是单链的,maxsum记录的是整个路径的, currentmax是单链，不会转弯的,maxsum是可能会转弯的
 //maxsum计算maxleft+maxright+node.val,这个maxleft和maxright就是你左右节点的currentmax返回上来的呀
+//https://www.runoob.com/java/java-variable-types.html
