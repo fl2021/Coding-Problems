@@ -99,3 +99,51 @@ class TweetCounts {
 * would visit all the nodes in the tree only once.
 *
 */
+
+class TweetCounts {
+    // use treemap to record the timeframe
+    private Map<String, TreeMap<Integer, Integer>> data;
+    private Map<String, Integer> freqs;
+
+    public TweetCounts() {
+        data = new HashMap<>();
+        freqs = new HashMap<>();
+        freqs.put("minute", 60);
+        freqs.put("hour", 3600);
+        freqs.put("day", 3600*24);
+               
+    }
+    
+    public void recordTweet(String tweetName, int time) {
+        if (!data.containsKey(tweetName)) {
+            data.put(tweetName, new TreeMap<>());
+        }
+        TreeMap<Integer, Integer> times = data.get(tweetName);
+        times.put(time, times.getOrDefault(time, 0) + 1);
+    }
+    
+    public List<Integer> getTweetCountsPerFrequency(String freq, String tweetName, int startTime, int endTime) {
+        int gap = freqs.get(freq);
+        
+        int[] res = new int[(endTime - startTime) / gap + 1];
+        for (Map.Entry<Integer,Integer> entry : data.get(tweetName).subMap(startTime, endTime + 1).entrySet()) {
+            res[(entry.getKey() - startTime) / gap] += entry.getValue();
+        }
+        List<Integer> returnRes = new ArrayList<>();
+        for (int i = 0; i < res.length; i++) {
+            returnRes.add(res[i]);
+        }
+        
+        return returnRes;
+        
+    }
+}
+
+/**
+ * Your TweetCounts object will be instantiated and called as such:
+ * TweetCounts obj = new TweetCounts();
+ * obj.recordTweet(tweetName,time);
+ * List<Integer> param_2 = obj.getTweetCountsPerFrequency(freq,tweetName,startTime,endTime);
+ */
+
+//O(logn) by using TreeMap O(n)
