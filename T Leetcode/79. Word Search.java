@@ -67,14 +67,13 @@ class Solution {
         }
         
         visited[x][y] = true;
-        boolean result = false;
+ 
         for (int[] dir : directions){
-            if (dfs(board, visited, word, x+dir[0], y+dir[1], idx+1)){
-                result = true;
-                break;
+            if (dfs(board, visited, word, x+dir[0], y+dir[1], idx + 1)){
+                return true;
             }
         }
         visited[x][y] = false;
-        return result;
+        return false;
     }
 }
